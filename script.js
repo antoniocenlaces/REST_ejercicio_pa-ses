@@ -26,6 +26,7 @@ const getCountryNeighbour = (code) => {
 };
 
 const renderData = (data, optionalClass = "") => {
+  console.log(data, `Objeto data recibido`);
   const {
     name,
     region,
@@ -34,37 +35,40 @@ const renderData = (data, optionalClass = "") => {
     currencies,
     flag: bandera,
   } = data;
-  console.log(name);
+  console.log(name, `name object received in renderData`);
   //const [, , nombre] = altSpellings;
   //console.log(nombre);
   const [nombreIngles] = Object.values(name);
-  const { common: nombreOriginal } = Object.values(Object.values(name)[1])[0];
-  console.log(nombreIngles);
-  console.log(nombreOriginal);
-  console.log(region);
-  console.log(poblacion);
+  console.log(Object.values(name), `Object values de objeto name`);
+  const nombreOriginal = Object.values(name)[1];
+  console.log(nombreIngles, `nombreIngles`);
+  console.log(nombreOriginal, `nombreOriginal`);
+  console.log(region, `Region`);
+  console.log(poblacion, `Población`);
   const [idioma] = Object.values(languages);
-  console.log(idioma);
+  console.log(idioma, `Idioma`);
   const { name: moneda, symbol: simbolo } = Object.values(currencies)[0];
-  console.log(moneda);
-  console.log(simbolo);
-  console.log(bandera);
+  console.log(moneda, `Moneda`);
+  console.log(simbolo, `Símbolo de moneda`);
+  console.log(bandera, `Bandera`);
 
   // hecho en clase
   const country = data.name.common;
   //const {name: {common: country}}} = data;
   const flag = data.flags.svg;
-  const { region: region1, population } = data;
+  // const { region: region1, population } = data;
   const [language] = Object.values(languages);
+  console.log(Object.values(data.currencies), `data.currencies en array`);
   const [currency] = Object.values(data.currencies);
+  console.log(currency, `extraido currency`);
   console.log(`Language: ${language}`);
   console.log(`currency: ${currency.name}`);
   const html = `<article class="country ${optionalClass}">
           <img class="country__img" src="${flag}" />
           <div class="country__data">
             <h3 class="country__name">${country}</h3>
-            <h4 class="country__region">${region1}</h4>
-            <p class="country__row">${population}</p>
+            <h4 class="country__region">${region}</h4>
+            <p class="country__row">${poblacion}</p>
             <p class="country__row">${language}</p>
             <p class="country__row">${currency.name}</p>
           </div>
